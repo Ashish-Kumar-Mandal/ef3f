@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.brand{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.brand img{
+    width: 100%;
+    height: 140%;
+}
+::-webkit-scrollbar{
+    width: 5px;
+}
+::-webkit-scrollbar-thumb{
+  background: linear-gradient(45deg, #06dee1, #79ff6c);
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px rgba(250, 246, 6, 0.5); 
+}
+::-webkit-scrollbar-corner{
+    background: linear-gradient(45deg, #06dee1, #79ff6c);
+}

@@ -1,0 +1,56 @@
+{% extends 'client/base.html' %}
+{% block title %} Add New Client {% endblock title %}
+{% block body_titlle %}Add New Client{% endblock body_titlle %}
+
+{% block body %}
+    <div class="row">
+        <!-- Area Chart -->
+        <div class="col-md-12">
+            <!-- Our Mission Example -->
+            <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Provide New Client Details</h6>
+            </div>
+            <div class="card-body text-justify">
+                <form class="user" method="post" action="/client/add_client"> {% csrf_token %}
+                <div class="form-group">
+                    <label for="refral_code" class="label">My Referal Code</label>
+                    <input type="text" class="form-control form-control-user" id="refral_code" name="refral_code" value="{{my_referal_code}}" readonly>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <label for="fname" class="label">First Name</label>
+                        <input type="text" class="form-control form-control-user" id="fname" name="fname" placeholder="First Name..." required>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="lname" class="label">Last Name</label>
+                        <input type="text" class="form-control form-control-user" id="lname" name="lname" placeholder="Last Name..." required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <label for="mobile" class="label">Mobile</label>
+                        <input type="text" class="form-control form-control-user" id="mobile" name="mobile" placeholder="Mobile Number..." required>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="email" class="label">Email</label>
+                        <input type="email" class="form-control form-control-user" id="email" name="email" placeholder="Email Address..." required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <label for="pass" class="label">Password</label>
+                        <input type="password" class="form-control form-control-user" id="pass" name="pass" placeholder="Password..." required>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="repass" class="label">Re-Password</label>
+                        <input type="password" class="form-control form-control-user" id="repass" name="repass" placeholder="Re-Password..." required>
+                    </div>
+                </div>
+                <input type="submit" value="Submit" class="btn btn-primary">
+                </form>
+            </div>
+            </div>
+        </div> 
+    </div>
+{% endblock body %}

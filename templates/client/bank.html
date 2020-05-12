@@ -1,0 +1,50 @@
+{% extends 'client/base.html' %}
+{% block title %} Bank Details Update {% endblock title %}
+{% block body_titlle %}Bank Details Update{% endblock body_titlle %}
+
+{% block body %}
+    <div class="row">
+        <!-- Area Chart -->
+        <div class="col-md-12">
+            <!-- Our Mission Example -->
+            <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Provide Bank Details</h6>
+            </div>
+            <div class="card-body text-justify">
+                <form class="user" method="post" action="/client/bank"> {% csrf_token %}
+                <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <label for="bank_name" class="label">Bank Name</label>
+                        <input type="text" class="form-control form-control-user"  value="{{bankDetails.bank_name}}" id="bank_name" name="bank_name" placeholder="Bank Name...">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="account_holder_name" class="label">Account Holder Name</label>
+                        <input type="text" class="form-control form-control-user" value="{{bankDetails.account_holder_name}}" id="account_holder_name" name="account_holder_name" placeholder="Account Holder Name...">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <label for="account_number" class="label">Account Number</label>
+                        <input type="password" class="form-control form-control-user" value="{{bankDetails.account_number}}" id="account_number" name="account_number" placeholder="Account Number...">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="account_number2" class="label">Re-Account Number</label>
+                        <input type="text" class="form-control form-control-user" value="{{bankDetails.account_number}}" id="account_number2" name="account_number2" placeholder="Re-Account Number...">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="branch_name" class="label">Branch Name</label>
+                    <input type="text" class="form-control form-control-user" value="{{bankDetails.branch_name}}" id="branch_name" name="branch_name" placeholder="Branch Name...">
+                </div>
+                <div class="form-group">
+                <label for="ifsc_code" class="label">IFSC Code</label>
+                    <input type="text" class="form-control form-control-user" value="{{bankDetails.ifsc_code}}" id="ifsc_code" name="ifsc_code" placeholder="IFSC Code...">
+                </div>
+                <input type="submit" value="Submit" class="btn btn-primary">
+                </form>
+            </div>
+            </div>
+        </div> 
+    </div>
+{% endblock body %}

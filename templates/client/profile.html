@@ -1,0 +1,82 @@
+{% extends 'client/base.html' %}
+{% block title %} Profile {% endblock title %}
+{% block body_titlle %}Profile Update{% endblock body_titlle %}
+
+{% block body %}
+    <div class="row">
+        <!-- Area Chart -->
+        <div class="col-md-12">
+            <!-- Our Mission Example -->
+            <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Add Profile</h6>
+            </div>
+            <div class="card-body text-justify">
+                <form class="user" method="post" action="/client/profile"> {% csrf_token %}
+                <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <label for="use_referal_code" class="label">Use Referal Code</label>
+                        <input type="text" class="form-control form-control-user"  value="{{profileDetails.use_referal_code}}" id="use_referal_code" name="use_referal_code" readonly>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="my_referal_code" class="label">My Referal Code</label>
+                        <input type="text" class="form-control form-control-user" value="{{profileDetails.my_referal_code}}" id="my_referal_code" name="my_referal_code" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <label for="gender" class="label">Gender</label>
+                        <input type="text" class="form-control form-control-user"  value="{{profileDetails.gender}}" id="gender" name="gender" placeholder="Gender...">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="marital_status" class="label">Marital Status</label>
+                        <input type="text" class="form-control form-control-user" value="{{profileDetails.marital_status}}" id="marital_status" name="marital_status" placeholder="Marital Status...">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <label for="dob" class="label">Date of Birth:</label> <span>( {{profileDetails.dob}} )</span>
+                        <input type="date" class="form-control form-control-user"  value="{{profileDetails.dob}}" id="dob" name="dob" placeholder="DOB...">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="designation" class="label">Designation</label>
+                        <input type="text" class="form-control form-control-user" value="{{profileDetails.designation}}" id="designation" name="designation" placeholder="Designation...">
+                    </div>
+                </div>                
+                <div class="form-group row">                    
+                    <div class="col-sm-6">
+                        <label for="state" class="label">State</label>
+                        <input type="text" class="form-control form-control-user" value="{{profileDetails.state}}" id="state" name="state" placeholder="State...">
+                    </div>
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <label for="district" class="label">District</label>
+                        <input type="text" class="form-control form-control-user"  value="{{profileDetails.district}}" id="district" name="district" placeholder="District...">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <label for="block" class="label">Block</label>
+                        <input type="text" class="form-control form-control-user" value="{{profileDetails.block}}" id="block" name="block" placeholder="Blpck...">
+                    </div>
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <label for="address" class="label">Address</label>
+                        <input type="text" class="form-control form-control-user"  value="{{profileDetails.address}}" id="address" name="address" placeholder="Address...">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <label for="pin_code" class="label">PIN Code</label>
+                        <input type="text" class="form-control form-control-user"  value="{{profileDetails.pin_code}}" id="pin_code" name="pin_code" placeholder="PIN Code...">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="image" class="label">Upload Profile Picture</label>
+                        <input type="file" class="form-control form-control-user pt-2" style="border: none;" id="image" name="image" placeholder="Image...">
+                    </div>
+                </div>
+                <input type="submit" value="Submit" class="btn btn-primary">
+                </form>
+            </div>
+            </div>
+        </div> 
+    </div>
+{% endblock body %}

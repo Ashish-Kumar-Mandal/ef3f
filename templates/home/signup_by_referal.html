@@ -1,0 +1,27 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block title %} Welcome | EF3F {% endblock title %}
+
+{% block body %}
+<div class="container">
+    <div id="logreg-forms">
+        <div class="logo">
+            <img class="img-fluid" src="{% static 'images/logo.png' %}" alt="">
+        </div> 
+        <form class="form-signin"  method="post" action="/signup_by_referal"> {% csrf_token %}
+            <h1 class="h3 pb-2 font-weight" style="text-align: center"> Please Sign Up </h1>
+            
+            <input type="text" id="referal_code" name="referal_code" class="form-control" value="{{use_referal_code}}" readonly><hr>
+            <input type="text" id="fname" name="fname" class="form-control" placeholder="First name..." required  autofocus="">
+            <input type="text" id="lname" name="lname" class="form-control" placeholder="Last name..." required>
+            <input type="text" id="mobile" name="mobile" class="form-control" placeholder="Mobile..." required>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Email..." required>
+            <input type="password" id="pass" name="pass" class="form-control" placeholder="Password..." required>
+            <input type="password" id="repass" name="repass" class="form-control" placeholder="Re-Password..." required>
+
+            <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Sign Up</button>
+        </form>            
+    </div>
+</div>
+{% endblock body %}
