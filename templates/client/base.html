@@ -119,6 +119,8 @@
                             </div>
                         </li>
                         <div class="topbar-divider d-none d-sm-block"></div>
+                        <li id="time" class="my-2"></li>
+                        <div class="topbar-divider d-none d-sm-block"></div>
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -170,7 +172,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; IncomeWithFriends.com 2020</span>
+                        <span>Copyright &copy; ef3f.com 2020</span>
                     </div>
                 </div>
             </footer>
@@ -247,6 +249,24 @@
     }
 
     </script>
+    <script type="text/javascript">
+
+		setInterval(function(){
+			var hr,min,sec, amPM;
+			var time = new Date();
+
+			var h = time.getHours();
+			var m = time.getMinutes();
+			var s = time.getSeconds();
+			if(h>=12){hr = h%12;amPM = 'PM'}else{hr = h;amPM = 'AM'}
+			if(hr<10){hr = '0'+hr}
+			if(m<10){m = '0'+m}
+			if(s<10){s = '0'+s}			
+			
+			document.getElementById("time").innerHTML ="<span style='color:#e3c710;'>Current Time </span><br><b style='color:#11ba35;'>"+hr+"</b>:<b style='color:#02d8f0;'>"+m+"</b>:<b style='color:#f02940;'>"+s+" <b style='color:#0818c4;'>"+amPM+"</b>";		
+		}, 500);
+
+	</script>
 </body>
 
 </html>

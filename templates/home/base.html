@@ -14,6 +14,7 @@
     {% block css %} {% endblock css %}
 </head>
 <body>
+<div id="time"></div>
     <div class="container opacity flex-row">
       {% for message in messages %}
         <div class="alert alert-{{ message.tags }} my-1 alert-dismissible fade show" role="alert">
@@ -66,5 +67,23 @@
     };
 
     </script>
+    <script type="text/javascript">
+
+		setInterval(function(){
+			var hr,min,sec, amPM;
+			var time = new Date();
+
+			var h = time.getHours();
+			var m = time.getMinutes();
+			var s = time.getSeconds();
+			if(h>=12){hr = h%12;amPM = 'PM'}else{hr = h;amPM = 'AM'}
+			if(hr<10){hr = '0'+hr}
+			if(m<10){m = '0'+m}
+			if(s<10){s = '0'+s}			
+			
+			document.getElementById("time").innerHTML ="<b style='color:#fff;'>"+hr+"</b> : <b style='color:#02d8f0;'>"+m+"</b> : <b style='color:#f02940;'>"+s+" <b style='color:#0818c4;'> "+amPM+"</b>";		
+		}, 500);
+
+	</script>
 </body>
 </html>

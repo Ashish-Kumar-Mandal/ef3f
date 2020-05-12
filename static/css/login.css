@@ -79,6 +79,17 @@ body{
     margin: 0 auto;
 }
 
+#time{
+    top: 0px;
+    position: fixed;
+    width: 100%;    
+    background-color: rgba(78, 53, 187, 0.5);
+    border-bottom: 1px solid white;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+
 /* Mobile */
 @media screen and (max-width:500px){
     #logreg-forms{
@@ -98,7 +109,12 @@ body{
         height: 56px;
         
     }    
+    #time{
+        height: 30px;
+        line-height: 30px;
+    }
 }
 .opacity{
     background-color: rgba(15, 15, 15, 0.8);
 }
+
