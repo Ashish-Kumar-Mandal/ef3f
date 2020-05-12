@@ -198,7 +198,7 @@
     
     {% block js %} {% endblock js %}
 
-    <!--script>
+    <script>
     /* restrict user browser click go back button */
     function preback() { window.history.forward(); }
     setTimeout("preback()", 0);
@@ -232,7 +232,21 @@
         if ((e.ctrlKey && e.shiftKey && (e.keyCode === 73)) || (e.ctrlKey && (e.keyCode === 65 || e.keyCode === 67 || e.keyCode === 72 || e.keyCode === 74 || e.keyCode === 78 || e.keyCode === 79 || e.keyCode === 80 || e.keyCode === 82 || e.keyCode === 83 || e.keyCode === 85 /* || e.keyCode === 88*/ || e.keyCode === 89 || e.keyCode === 90))) { return false; }
         return true;
     };
-    </script-->
+
+    /* To check Valid mobile number*/
+    function isMobile(){
+        let re = /^0?[5-9]{1}\d{9}$/;
+        var mobile = document.getElementById('mobile');
+        if(mobile.value != ""){
+            if(mobile.value.match(re)){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }
+
+    </script>
 </body>
 
 </html>

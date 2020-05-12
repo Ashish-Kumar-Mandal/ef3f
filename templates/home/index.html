@@ -28,7 +28,7 @@
             <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Back</a>
         </form>
         
-        <form action="/signup" method="post" class="form-signup"> {% csrf_token %}
+        <form action="/signup" method="post" class="form-signup" onsubmit="return validate()"> {% csrf_token %}
             <h1 class="h3 pb-2 font-weight" style="text-align: center"> Please Sign Up </h1>
             
             <input type="text" id="referal_code" name="referal_code" class="form-control" placeholder="Referal code..." autofocus=""><hr>
@@ -46,7 +46,7 @@
 </div>
 {% endblock body %}
 
-{% block js %}
+{% block js %}<script>
 function toggleResetPswd(e){
     e.preventDefault();
     $('#logreg-forms .form-signin').toggle() // display:block or none
@@ -67,4 +67,33 @@ $(()=>{
     $('#logreg-forms #cancel_signup').click(toggleSignUp);
 })
 
-{% endblock js %}
+/* Validate signup form */
+function validate(){
+    var mobile = document.getElementById('mobile');
+    var pass = document.getElementById('pass');
+    var repass = document.getElementById('repass');
+
+    re_mobile = /^[5-9]{1}\d{9}$/;
+        
+    if((mobile.value.match(re_mobile)) && (mobile.value.length==10)){
+        mobile.style.borderColor = "";
+        mobile.style.color = "";
+    }else{
+        mobile.style.borderColor = "red";
+        mobile.style.color = "red";
+        return false;
+    }
+
+    if(pass.value==repass.value){
+        repass.style.borderColor = "";
+        repass.style.color = "";
+    }else{
+        repass.style.borderColor = "red";
+        repass.style.color = "red";
+        return false; 
+    }
+
+    return true;
+  }
+
+</script>{% endblock js %}

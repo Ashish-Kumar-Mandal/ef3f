@@ -79,14 +79,13 @@ def signup_by_referal(request):
             myuser.last_name = lname
             myuser.save()
             UserProfile.objects.filter(user_id=myuser).update(use_referal_code=use_referal_code, my_referal_code=my_referal_code)
-            messages.success(request, 'Congratulations! Your IncomeWithFriends account has been registred successfully.')
+            messages.success(request, 'Congratulations! Your EF3F account has been registred successfully.')
             return redirect('Home')
         except:
             messages.error(request, 'This mobile number is not allowed. Try another number!')
             return render(request, 'home/signup_by_referal.html', {'use_referal_code': use_referal_code})
 
     use_referal_code = request.GET.get('use_referal_code')
-    print(use_referal_code)
     return render(request, 'home/signup_by_referal.html', {'use_referal_code': use_referal_code})
 
 def handleLogin(request):
