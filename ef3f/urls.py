@@ -24,6 +24,7 @@ admin.site.index_title = "Welcome to EF3F Admin Panel"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('blog/', include('blog.urls')),
     path('client/', include('client.urls')),
     path('', include('home.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
