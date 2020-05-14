@@ -28,6 +28,7 @@ class UserProfile(models.Model):
     user_id = models.OneToOneField(User, on_delete=models.CASCADE)
     use_referal_code = models.CharField(max_length=10, blank=True, null=True)
     my_referal_code = models.CharField(max_length=10, blank=True, null=True)
+    mobile = models.IntegerField(blank=True, null=True)
     gender = models.CharField(max_length=10, blank=True, null=True)
     marital_status = models.CharField(max_length=10, blank=True, null=True)
     dob = models.DateField(auto_now=False, auto_now_add=False, blank=True, null=True)
