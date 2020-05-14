@@ -1,6 +1,19 @@
 {% extends 'base.html' %}
 {% block title %} My Referal Code {% endblock title %}
 {% block body_titlle %}My Referal Code{% endblock body_titlle %}
+{% block css %}<style>
+#urlShare{
+    min-width: 500px;
+    overflow-x: scroll;
+    border: none;
+    outline: none;
+    color: rgba(red, green, blue, alpha);
+    border-radius: 10px;
+}
+.alert{
+    display: none;
+}
+</style>{% endblock css %}
 
 {% block body %}
     <div class="row">
@@ -9,17 +22,39 @@
             <!-- Our Mission Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Share Everyone This Referal Code</h6>
+                    <h5 class="m-0 font-weight-bold text-primary">My Referal Code: <span class="badge badge-success">{{my_referal_code}}</span></h5>
                 </div>
                 <div class="card-body text-justify">
-                    <form class="user" method="post" action="/client/my_referal_code"> {% csrf_token %}
-                        <div class="form-group">
-                            <h3>My Referal Code: <span class="badge badge-success">{{my_referal_code}}</span></h3>
-                        </div>    
-                        <a href="{{ BASE_URL }}/signup_by_referal?use_referal_code={{my_referal_code}}" target="_blank" class="btn btn-primary">Link Share</a>
-                    </form>
+                    <div>
+                        <p id="urlShare">{{ request.get_host }}/signup_by_referal?use_referal_code={{my_referal_code}}</p>
+                        <button id="btnShare" class="btn btn-primary btn-sm"><i class="fa fa-share-alt"> Copy + Share</i></button>
+                        <span class="alert">Copied</span>
+                    </div>  
                 </div>
             </div>
         </div> 
     </div>
 {% endblock body %}
+
+{% block js %}<script>
+    function copy(copyId){
+        var $inp = $("<input>");
+        $("body").append($inp);
+        $inp.val($(""+copyId).text()).select();
+        document.execCommand("copy");
+        $inp.remove();
+        $(".alert").fadeIn(500, function(){
+            $(".alert").fadeOut(2000)            
+        });
+
+        $("p").css({"color": "red", "font-weight": "bold"});
+        $("#btnShare").html('Copied');
+        $("#btnShare").css('background-color','green');
+    }
+
+    $(document).ready(function(){
+        $("#btnShare").click(function(){
+            copy("#urlShare");            
+        });
+    });
+</script>{% endblock js %}

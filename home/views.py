@@ -49,7 +49,7 @@ def handleSignup(request):
             myuser.last_name = lname
             myuser.save()
             UserProfile.objects.filter(user_id=myuser).update(use_referal_code=use_referal_code, my_referal_code=my_referal_code, mobile=mobile)
-            messages.success(request, 'Congratulations! Your EF3F account has been registred successfully.')
+            messages.success(request, '( USER_ID: '+uname+' ) Congratulations! Your EF3F account has been registred successfully.')
         except:
             messages.error(request, 'Something Wrong! Try again.')
         return redirect('Home')
@@ -96,7 +96,7 @@ def signup_by_referal(request):
             myuser.last_name = lname
             myuser.save()
             UserProfile.objects.filter(user_id=myuser).update(use_referal_code=use_referal_code, my_referal_code=my_referal_code, mobile=mobile)
-            messages.success(request, 'Congratulations! Your EF3F account has been registred successfully.')
+            messages.success(request, '( USER_ID: '+uname+' ) Congratulations! Your EF3F account has been registred successfully.')
             return redirect('Home')
         except:
             messages.error(request, 'Something Wrong! Try again.')
