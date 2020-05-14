@@ -8,7 +8,9 @@ from client.models import Contact, UserBank, UserProfile
 
 
 def index(request):
-    return render(request, 'client/index.html')
+    total_clients = User.objects.all().count()
+    summary = {'total_clients': total_clients}
+    return render(request, 'client/index.html', summary)
 
 def profile(request):
     if request.method=="POST":
