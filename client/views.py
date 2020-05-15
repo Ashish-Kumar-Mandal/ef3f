@@ -15,8 +15,8 @@ def index(request):
 
 def profile(request):
     if request.method=="POST":
-        use_referal_code = request.POST['use_referal_code']
         my_referal_code = request.POST['my_referal_code']
+        mobile = request.POST['mobile']
         gender = request.POST['gender']
         marital_status = request.POST['marital_status']
         dob = request.POST['dob']
@@ -26,10 +26,9 @@ def profile(request):
         district = request.POST['district']
         state = request.POST['state']
         pin_code = request.POST['pin_code']
-        image = request.POST['image']
 
         try:
-            UserProfile.objects.filter(user_id=request.user).update(use_referal_code=use_referal_code, my_referal_code=my_referal_code, gender=gender, marital_status=marital_status, dob=dob, designation=designation, address=address, block=block, district=district, state=state, pin_code=pin_code,)
+            UserProfile.objects.filter(user_id=request.user).update(my_referal_code=my_referal_code, mobile=mobile, gender=gender, marital_status=marital_status, dob=dob, designation=designation, state=state, district=district, block=block, address=address, pin_code=pin_code)
             messages.success(request, 'Your Profile Details Successfully Saved. Thank you.')
         except:
             messages.error(request, 'Something Wrong!')

@@ -19,24 +19,35 @@
                         <input type="text" class="form-control form-control-user" value="{{profileDetails.my_referal_code}}" id="my_referal_code" name="my_referal_code" readonly>
                     </div>
                     <div class="col-sm-6">
-                        <label for="my_referal_code" class="label">Mobile</label>
-                        <input type="text" class="form-control form-control-user" value="{{profileDetails.mobile}}" id="mobile" name="mobile" placeholder="Mobile...">
+                        <label for="mobile" class="label">Mobile</label>
+                        <input type="text" class="form-control form-control-user" value="{{profileDetails.mobile}}" id="mobile" name="mobile" placeholder="Mobile..." required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
                         <label for="gender" class="label">Gender</label>
-                        <input type="text" class="form-control form-control-user"  value="{{profileDetails.gender}}" id="gender" name="gender" placeholder="Gender...">
+                        <select id="gender" class="form-control" name="gender">
+                            <option>{{profileDetails.gender}}</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
                     </div>
                     <div class="col-sm-6">
                         <label for="marital_status" class="label">Marital Status</label>
-                        <input type="text" class="form-control form-control-user" value="{{profileDetails.marital_status}}" id="marital_status" name="marital_status" placeholder="Marital Status...">
+                        <select id="marital_status" class="form-control" name="marital_status">
+                            <option>{{profileDetails.marital_status}}</option>
+                            <option>Single</option>
+                            <option>Married</option>
+                            <option>Widow</option>
+                            <option>Seprated</option>
+                            <option>Commited</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
                         <label for="dob" class="label">Date of Birth:</label> <span>( {{profileDetails.dob}} )</span>
-                        <input type="date" class="form-control form-control-user"  value="{{profileDetails.dob}}" id="dob" name="dob" placeholder="DOB...">
+                        <input type="date" class="form-control"  value="{{profileDetails.dob}}" id="dob" name="dob" placeholder="DOB..." required>
                     </div>
                     <div class="col-sm-6">
                         <label for="designation" class="label">Designation</label>
