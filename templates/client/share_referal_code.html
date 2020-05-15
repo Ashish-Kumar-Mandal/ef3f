@@ -3,8 +3,6 @@
 {% block body_titlle %}My Referal Code{% endblock body_titlle %}
 {% block css %}<style>
 #urlShare{
-    min-width: 500px;
-    overflow-x: scroll;
     border: none;
     outline: none;
     color: rgba(red, green, blue, alpha);
@@ -27,7 +25,8 @@
                 <div class="card-body text-justify">
                     <div>
                         <p id="urlShare">{{ request.get_host }}/signup_by_referal?use_referal_code={{my_referal_code}}</p>
-                        <button id="btnShare" class="btn btn-primary btn-sm"><i class="fa fa-share-alt"> Copy + Share</i></button>
+                        <button id="btnShare" class="btn btn-primary btn-sm"><i class="fa fa-share-alt"> Copy </i></button>                        
+                        <a href="whatsapp://send?text={{ request.get_host }}/signup_by_referal?use_referal_code={{my_referal_code}}"><i class="fa fa-whatsapp btn btn-primary btn-sm"> Share</i></a>
                         <span class="alert">Copied</span>
                     </div>  
                 </div>
