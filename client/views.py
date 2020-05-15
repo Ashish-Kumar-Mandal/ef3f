@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model  # for reset password
 from django.contrib.auth import authenticate, logout
 from client.models import Contact, UserBank, UserProfile
 
@@ -39,6 +40,32 @@ def profile(request):
     return render(request, 'client/profile.html', {'profileDetails': profileDetails})
 
 def password(request):
+    if request.method=="POST":
+        username = request.user
+        old_psw = request.POST['old_psw']
+        psw = request.POST['psw']
+        repsw = request.POST['repsw']
+        
+        if psw != repsw:
+            messages.error(request, 'Confirm password not matched! Try again.')
+            return redirect('/client/password')
+        
+        try:
+            user_logedin = authenticate(username=username, password=old_psw)
+            user = get_user_model().objects.get(username=username)
+
+            if user != user_logedin:
+                messages.error(request, 'Current password not matched!')
+                return redirect('/client/password')
+            else:
+                user.set_password(psw)
+                user.save()
+                messages.success(request, 'Your Profile Password Successfully Changed. Now Login')
+                return redirect('/')
+        except:
+            messages.error(request, 'Something Wrong!')
+            return redirect('/client/password')
+
     return render(request, 'client/password.html')
 
 def bank(request):
@@ -72,44 +99,50 @@ def bank(request):
 def client_list(request):
     myProfileDetails = UserProfile.objects.filter(user_id=request.user).first()
     my_referal_code = myProfileDetails.my_referal_code
-    myClientList = UserProfile.objects.filter(use_referal_code=my_referal_code)
-    for i in myClientList:
-        print(i.user_id)
+    myClientList = UserProfile.objects.filter(use_referal_code=my_referal_code)    
     return render(request, 'client/client_list.html', {'myClientList': myClientList})
 
 def add_client(request):
     if request.method=="POST":
         use_referal_code = request.POST['refral_code']
-        fname = request.POST['fname']
-        lname = request.POST['lname']        
+        name = request.POST['name'].strip().split(" ")   # split the entire name in list.    
         mobile = request.POST['mobile']
         email = request.POST['email']
         password = request.POST['pass']
         repass = request.POST['repass']
-        my_referal_code = fname[0]+lname[0]+email[0]+password[0]+mobile[4:]
+        fname = name[0].capitalize()     # find first name.
+        lname = name[-1].capitalize()    # find last name.
+        uname = email.split("@")[0]    # find user name form first part of emailid.
+        my_referal_code = fname[0]+lname[0]+email[0]+password[0]+mobile[4:]     # generate referal code.
 
         if password != repass:
             messages.warning(request, 'Re-password not matched. Try again.')
-            return redirect('Home')
+            return redirect('Add_client')
 
         if not mobile.isnumeric():
             messages.error(request, 'Please enter valid mobile number')
-            return redirect('Home')
+            return redirect('Add_client')
         
         if len(mobile) != 10:
             messages.warning(request, 'Mobile number contain only 10 digits.')
-            return redirect('Home')
+            return redirect('Add_client')
         
+        exist_uname = User.objects.filter(username=uname)
+        exist_email = User.objects.filter(email=email)
+        if exist_uname or exist_email:
+            messages.warning(request, 'This email id is not allowed! Try another email id.')
+            return redirect('Add_client')
+
         try:
-            myuser = User.objects.create_user(mobile, email, password)
+            myuser = User.objects.create_user(uname, email, password)
             myuser.first_name = fname
             myuser.last_name = lname
             myuser.save()
-            UserProfile.objects.filter(user_id=myuser).update(use_referal_code=use_referal_code, my_referal_code=my_referal_code)
+            UserProfile.objects.filter(user_id=myuser).update(use_referal_code=use_referal_code, my_referal_code=my_referal_code, mobile=mobile)
             messages.success(request, 'Congratulations! In EF3F have, your new Client account has been registred successfully.')
         except:
             messages.error(request, 'This mobile number is not allowed. Try another number!')
-        return redirect('/client/add_client')
+        return redirect('Add_client')
 
     my_referal_code = UserProfile.objects.filter(user_id=request.user).first().my_referal_code
     return render(request, 'client/add_client.html', {'my_referal_code': my_referal_code})

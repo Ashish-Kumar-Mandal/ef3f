@@ -17,8 +17,8 @@ def handleSignup(request):
         email = request.POST['email']
         password = request.POST['pass']
         repass = request.POST['repass']
-        fname = name[0]     # find first name.
-        lname = name[-1]    # find last name.
+        fname = name[0].capitalize()     # find first name.
+        lname = name[-1].capitalize()    # find last name.
         uname = email.split("@")[0]    # find user name form first part of emailid.
         my_referal_code = fname[0]+lname[0]+email[0]+password[0]+mobile[4:]     # generate referal code.
         
@@ -64,8 +64,8 @@ def signup_by_referal(request):
         email = request.POST['email']
         password = request.POST['pass']
         repass = request.POST['repass']
-        fname = name[0]     # find first name.
-        lname = name[-1]    # find last name.
+        fname = name[0].capitalize()     # find first name.
+        lname = name[-1].capitalize()    # find last name.
         uname = email.split("@")[0]    # find user name form first part of emailid.
         my_referal_code = fname[0]+lname[0]+email[0]+password[0]+mobile[4:]     # generate referal code.
         

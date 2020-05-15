@@ -14,13 +14,13 @@
             <div class="card-body text-justify">
                 <form class="user" method="post" action="/client/profile"> {% csrf_token %}
                 <div class="form-group row">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
-                        <label for="use_referal_code" class="label">Use Referal Code</label>
-                        <input type="text" class="form-control form-control-user"  value="{{profileDetails.use_referal_code}}" id="use_referal_code" name="use_referal_code" readonly>
-                    </div>
                     <div class="col-sm-6">
                         <label for="my_referal_code" class="label">My Referal Code</label>
                         <input type="text" class="form-control form-control-user" value="{{profileDetails.my_referal_code}}" id="my_referal_code" name="my_referal_code" readonly>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="my_referal_code" class="label">Mobile</label>
+                        <input type="text" class="form-control form-control-user" value="{{profileDetails.mobile}}" id="mobile" name="mobile" placeholder="Mobile...">
                     </div>
                 </div>
                 <div class="form-group row">
