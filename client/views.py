@@ -167,7 +167,7 @@ def contact(request):
                 messages.success(request, 'Your message has been successfully sent.')
             except:
                 messages.error(request, 'Something Wrong!, Try again.')
-    return render(request, 'client/index.html')
+    return redirect('/client')
     
 
 def handleLogout(request):

@@ -1,15 +1,7 @@
 {% extends 'base.html' %}
 {% block title %} Client List {% endblock title %}
 {% block body_titlle %}Client Details{% endblock body_titlle %}
-{% block css %}<style>
-#active_status{
-  background-color: rgb(250, 6, 6);
-  color: rgb(255, 255, 255);
-  border-radius: 50%;
-  padding: 0 7px;
-  font-weight: bold;
-}
-</style>{% endblock css %}
+{% block css %}<style></style>{% endblock css %}
 
 {% block body %}
     <div class="container-fluid">    
@@ -42,7 +34,7 @@
                       <td>{{list.district}}</td>
                       <td>{{list.state}}</td>
                       <td>{{list.timeStamp}}</td>
-                      <td><span id="active_status">x</span></td>
+                      <td><i class="fa fa-times-circle-o" style="font-size:24px;color:red"></i></td>
                     </tr>
                     {% endfor %}
                   </tbody>

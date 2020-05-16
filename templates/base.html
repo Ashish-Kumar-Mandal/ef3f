@@ -133,11 +133,43 @@
                         </button>
                         </div>
                     {% endfor %}
-                    <!-- body title -->
-                    <h1 class="h3 mb-4 text-gray-800">{% block body_titlle %} {% endblock body_titlle %}</h1>
-                    
                     <!-- Page body -->
+                    <div class="d-flex">
+                        <div class="p-2">{% block body_titlle %} {% endblock body_titlle %}</div>
+                        <div class="p-2">
+                            <span style="color:red;"><i class="fa fa-times-circle-o" style="font-size:16px;color:red"></i> Inactive</span>
+                            <!--<span style="color:green;"><i class="fa fa-check-circle-o" style="font-size:16px;color:green"></i> Active</span>-->
+                        </div>
+                        <div class="ml-auto p-2"><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#helpMessage"><i class="fas fa-envelope"></i> Help</button></div>
+                    </div>
                     {% block body %} {% endblock body %}
+                    <!-- Help Message Modal-->
+                    <div class="modal fade" id="helpMessage" tabindex="-1" role="dialog" aria-labelledby="helpMessageModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <form class="user" method="post" action="/client/contact"> {% csrf_token %}
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">If any Problem, please send message.</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <input type="hidden" class="form-control" id="name" name="name" value="{{user.get_full_name}}" readonly>
+                                <input type="hidden" class="form-control" id="mobile" name="mobile" value="{{user.username}}" readonly>
+                                <input type="hidden" class="form-control" id="email" name="email" value="{{user.email}}" readonly>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="msg_title" name="msg_title" placeholder="Message Title...">
+                                </div>
+                                <div class="form-group">
+                                    <textarea name="msg_content" id="msg_content"  rows="3" class="form-control" placeholder="Message Content..."></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                            <input type="submit" value="Submit" class="btn btn-primary">
+                            </div>
+                        </form>
+                        </div>
+                        </div>
+                    </div>
 
                 </div>
                 <!-- /.container-fluid -->
