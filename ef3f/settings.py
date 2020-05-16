@@ -145,3 +145,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
+
+# send any message via email
+EMAIL_HOST= 'smtp.gmail.com'
+EMAIL_HOST_USER= 'growyourmoneywithmlm@gmail.com'
+EMAIL_HOST_PASSWORD= 'kunal@bsd'
+EMAIL_PORT= 587
+EMAIL_USE_TLS= True
+DEFAULT_FROM_EMAIL = 'EF3F TEAM <no-reply@ef3f.com>'

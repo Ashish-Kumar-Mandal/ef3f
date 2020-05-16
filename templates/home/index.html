@@ -21,9 +21,9 @@
             <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Sign up New Account</button>
         </form>
 
-        <form action="#" method="post" class="form-reset">
+        <form action="/resetSend" method="post" class="form-reset"> {% csrf_token %}
             <h1 class="h3 pb-2 font-weight" style="text-align: center"> Reset Password </h1>
-            <input type="email" id="email" class="form-control" placeholder="Email..." required autofocus="">
+            <input type="email" id="email" name="email" class="form-control" placeholder="Email..." required autofocus="">
             <button class="btn btn-primary btn-block" type="submit">Reset Password</button>
             <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Back</a>
         </form>
