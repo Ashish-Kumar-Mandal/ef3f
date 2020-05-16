@@ -40,8 +40,8 @@
         
         {% for comment in comments %}
             <div class="row my-2">
-                <div class="col-md-1"><img src="/static/images/userIcon.jfif" alt="User" class="rounded-circle w-100"></div>
-                <div class="col-md-11">
+                <div class="col-xs-3 col-sm-2 col-md-1"><img src="/static/images/userIcon.jfif" alt="User" height="42" width="42"></div>
+                <div class="col-xs-9 col-sm-10 col-md-11">
                     <p><b class="text-danger">{{comment.user.get_full_name}}</b><sub class="text-secondary pl-1"> ({{comment.timeStamp|naturaltime}})</sub></p>
                     <div class="text-justify">{{comment.comment}}</div>
 
@@ -63,8 +63,8 @@
                         <div class="replies">
                             {% for reply in replyDict|get_val:comment.sno %}
                                 <hr><div class="row my-2">
-                                    <div class="col-md-1"><img src="/static/images/userIcon.jfif" alt="User" class="rounded-circle w-100"></div>
-                                    <div class="col-md-11">
+                                    <div class="col-xs-3 col-sm-2 col-md-1"><img src="/static/images/userIcon.jfif" alt="User"height="32" width="32"></div>
+                                    <div class="col-xs-9 col-sm-10 col-md-11">
                                         <p><b class="text-danger">{{reply.user.get_full_name}}</b><sub class="text-secondary pl-1"> ({{reply.timeStamp|naturaltime}})</sub></p>
                                         <div class="text-justify">{{reply.comment}}</div>
                                     </div>

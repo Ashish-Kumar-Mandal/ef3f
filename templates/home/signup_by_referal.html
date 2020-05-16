@@ -5,14 +5,33 @@
 
 {% block body %}
 <div class="container">
-    <div id="logreg-forms">
+    <div id="logreg-forms">         
         <div class="logo">
             <img class="img-fluid" src="{% static 'images/logo.png' %}" alt="">
-        </div> 
-        <form class="form-signin"  method="post" action="/signup_by_referal" onsubmit="return validate()"> {% csrf_token %}
+        </div>       
+        <form class="form-signin"  method="post" action="/login"> {% csrf_token %}
+            <h1 class="h3 pb-2 font-weight" style="text-align: center"> Please Sign in </h1>
+            
+            <input type="text" id="user_id" name="user_id" class="form-control my-1" placeholder="User Id / Email Id..." required autofocus="">
+            <input type="password" id="password" name="password" class="form-control my-1" placeholder="Password..." required autofocus="">
+            
+            <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in</button>
+            <a href="#" id="forgot_pswd">Forgot password?</a>
+            <hr>
+            <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Sign up New Account</button>
+        </form>
+
+        <form action="#" method="post" class="form-reset"> {% csrf_token %}
+            <h1 class="h3 pb-2 font-weight" style="text-align: center"> Reset Password </h1>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Email..." required autofocus="">
+            <button class="btn btn-primary btn-block" type="submit">Reset Password</button>
+            <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Back</a>
+        </form>
+        
+        <form method="post" class="form-signup" action="/signup_by_referal" onsubmit="return validate()"> {% csrf_token %}
             <h1 class="h3 pb-2 font-weight" style="text-align: center"> Please Sign Up </h1>
             
-            <input type="text" id="referal_code" name="referal_code" class="form-control" value="{{use_referal_code}}" readonly><hr>
+            <input type="text" id="referal_code" name="referal_code" class="form-control"  value="{{use_referal_code}}" readonly><hr>
             <input type="text" id="name" name="name" class="form-control" placeholder="Name..." required>
             <input type="text" id="mobile" name="mobile" class="form-control" placeholder="Mobile..." required>
             <input type="email" id="email" name="email" class="form-control" placeholder="Email..." required>
@@ -20,12 +39,33 @@
             <input type="password" id="repass" name="repass" class="form-control" placeholder="Re-Password..." required>
 
             <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Sign Up</button>
-        </form>            
+            <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Back</a>
+        </form>
     </div>
 </div>
 {% endblock body %}
 
 {% block js %}<script>
+function toggleResetPswd(e){
+    e.preventDefault();
+    $('#logreg-forms .form-signin').toggle() // display:block or none
+    $('#logreg-forms .form-reset').toggle() // display:block or none
+}
+
+function toggleSignUp(e){
+    e.preventDefault();
+    $('#logreg-forms .form-signin').toggle(); // display:block or none
+    $('#logreg-forms .form-signup').toggle(); // display:block or none
+}
+
+$(()=>{
+    // Login Register Form
+    $('#logreg-forms #forgot_pswd').click(toggleResetPswd);
+    $('#logreg-forms #cancel_reset').click(toggleResetPswd);
+    $('#logreg-forms #btn-signup').click(toggleSignUp);
+    $('#logreg-forms #cancel_signup').click(toggleSignUp);
+})
+
 /* Validate signup form */
 function validate(){
     var mobile = document.getElementById('mobile');
@@ -54,4 +94,5 @@ function validate(){
 
     return true;
   }
+
 </script>{% endblock js %}
