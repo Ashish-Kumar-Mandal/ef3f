@@ -110,7 +110,7 @@ def handleLogin(request):
         user_id = request.POST['user_id'].split("@")[0]
         password = request.POST['password']
 
-        user = authenticate(username=user_id, password=password)
+        user = authenticate(request, username=user_id, password=password)
         if user is not None:
             login(request, user)
             messages.success(request, 'You have Successfully Loged In')
@@ -123,31 +123,3 @@ def handleLogin(request):
         return redirect('Home')
 
     return render(request, 'home/index.html')
-
-def handleResetSend(request):
-    if request.method=='POST':
-        email = request.POST['email']
-        user_id = email.split("@")[0]
-        try:
-            check_user = User.objects.filter(username=user_id).first()
-            if check_user:
-                send_mail(
-                    'EF3F Account Password Reset',
-                    'Email facilities under process',
-                    'no-reply@ef3f.com',
-                    [email],
-                    fail_silently=False,
-                )
-                messages.success(request, 'Your mail sent successfully, please login own email and reset password via provide link.')
-                return redirect('Home')
-            else:
-                messages.error(request, 'You are not Authenticated User!')
-                return redirect('Home')
-        except:
-            messages.error(request, 'Server Error!')
-            return redirect('Home')
-        return redirect('Home')
-    return render(request, 'home/index.html')
-
-def handleResetReceive(request):
-    pass

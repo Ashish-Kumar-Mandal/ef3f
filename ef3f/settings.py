@@ -146,7 +146,7 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
 
-# send any message via email
+# HOSTING EMAIL
 EMAIL_HOST= 'smtp.gmail.com'
 EMAIL_HOST_USER= 'growyourmoneywithmlm@gmail.com'
 EMAIL_HOST_PASSWORD= 'kunal@bsd'

@@ -16,16 +16,8 @@
             <input type="password" id="password" name="password" class="form-control my-1" placeholder="Password..." required autofocus="">
             
             <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in</button>
-            <a href="#" id="forgot_pswd">Forgot password?</a>
             <hr>
             <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Sign up New Account</button>
-        </form>
-
-        <form action="#" method="post" class="form-reset"> {% csrf_token %}
-            <h1 class="h3 pb-2 font-weight" style="text-align: center"> Reset Password </h1>
-            <input type="email" id="email" name="email" class="form-control" placeholder="Email..." required autofocus="">
-            <button class="btn btn-primary btn-block" type="submit">Reset Password</button>
-            <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Back</a>
         </form>
         
         <form method="post" class="form-signup" action="/signup_by_referal" onsubmit="return validate()"> {% csrf_token %}
@@ -60,8 +52,6 @@ function toggleSignUp(e){
 
 $(()=>{
     // Login Register Form
-    $('#logreg-forms #forgot_pswd').click(toggleResetPswd);
-    $('#logreg-forms #cancel_reset').click(toggleResetPswd);
     $('#logreg-forms #btn-signup').click(toggleSignUp);
     $('#logreg-forms #cancel_signup').click(toggleSignUp);
 })
