@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-{% block title %} Add New Client {% endblock title %}
-{% block body_titlle %}Add New Client{% endblock body_titlle %}
+{% block title %} Add New Member {% endblock title %}
+{% block body_titlle %}Add New Member{% endblock body_titlle %}
 
 {% block body %}
     <div class="row">
@@ -9,7 +9,7 @@
             <!-- Our Mission Example -->
             <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Provide New Client Details</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Provide New Member Details</h6>
             </div>
             <div class="card-body text-justify">
                 <form class="user" method="post" action="/client/add_client"> {% csrf_token %}

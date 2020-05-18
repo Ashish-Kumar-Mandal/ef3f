@@ -32,28 +32,11 @@
                             <option>Female</option>
                         </select>
                     </div>
-                    <div class="col-sm-6">
-                        <label for="marital_status" class="label">Marital Status</label>
-                        <select id="marital_status" class="form-control" name="marital_status">
-                            <option>{{profileDetails.marital_status}}</option>
-                            <option>Single</option>
-                            <option>Married</option>
-                            <option>Widow</option>
-                            <option>Seprated</option>
-                            <option>Commited</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
                         <label for="dob" class="label">Date of Birth:</label> <span>( {{profileDetails.dob}} )</span>
                         <input type="date" class="form-control"  value="{{profileDetails.dob}}" id="dob" name="dob" placeholder="DOB..." required>
                     </div>
-                    <div class="col-sm-6">
-                        <label for="designation" class="label">Designation</label>
-                        <input type="text" class="form-control form-control-user" value="{{profileDetails.designation}}" id="designation" name="designation" placeholder="Designation...">
-                    </div>
-                </div>                
+                </div>              
                 <div class="form-group row">                    
                     <div class="col-sm-6">
                         <label for="state" class="label">State</label>

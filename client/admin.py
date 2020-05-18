@@ -15,8 +15,8 @@ class UserBankAdmin(ModelAdmin):
 admin.site.register(UserBank, UserBankAdmin)
 
 class UserProfileAdmin(ModelAdmin):
-    list_display = ["user_id", "mobile", "my_referal_code", "gender","marital_status", "dob", "timeStamp"]
-    search_fields = ["user_id", "mobile", "dob", "designation", "block", "district","state", "pin_code"]
-    list_filter = ["timeStamp", "marital_status", "gender"]
+    list_display = ["user_id", "mobile", "my_referal_code", "gender", "dob", "timeStamp"]
+    search_fields = ["user_id", "mobile", "dob", "block", "district","state", "pin_code"]
+    list_filter = ["timeStamp", "gender"]
 admin.site.register(UserProfile, UserProfileAdmin)
 

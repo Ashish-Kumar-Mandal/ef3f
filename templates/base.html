@@ -50,28 +50,28 @@
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" href="/client/bank">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Add Bank Details</span></a>
+                    <i class="fas fa-institution"></i>
+                    <span>Bank Details</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/client/client_list">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>My Client List</span></a>
+                    <span>My Members</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/client/add_client">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Add New Client</span></a>
+                    <i class="fas fa-user-plus"></i>
+                    <span>Add Member</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/client/my_referal_code">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>My Referal Code</span></a>
+                    <i class="fas fa-share-alt"></i>
+                    <span>Share Links</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/blog">
-                    <i class="fas fa-fw fa-file"></i>
-                    <span>My Blog</span></a>
+                    <i class="fas fa-users"></i>
+                    <span>Communities</span></a>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -127,18 +127,18 @@
                     <!-- This div part is used for dispay any message -->
                     {% for message in messages %}
                         <div class="alert alert-{{ message.tags }} mb-1 alert-dismissible fade show" role="alert">
-                        <strong style="text-transform: capitalize;">Message!</strong> {{ message }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                            <strong style="text-transform: capitalize;">Message!</strong> {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
                     {% endfor %}
                     <!-- Page body -->
                     <div class="d-flex">
                         <div class="p-2">{% block body_titlle %} {% endblock body_titlle %}</div>
                         <div class="p-2">
-                            <span style="color:red;"><i class="fa fa-times-circle-o" style="font-size:16px;color:red"></i> Inactive</span>
-                            <!--<span style="color:green;"><i class="fa fa-check-circle-o" style="font-size:16px;color:green"></i> Active</span>-->
+                            <span style="color:red; font-size:10px;"><i class="fa fa-times-circle-o"></i> Inactive</span>
+                            <!--<span style="color:green; font-size:10px;"><i class="fa fa-check-circle-o"></i> Active</span>-->
                         </div>
                         <div class="ml-auto p-2"><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#helpMessage"><i class="fas fa-envelope"></i> Help</button></div>
                     </div>
@@ -206,56 +206,54 @@
     {% block js %} {% endblock js %}
 
     <script>
-    /* restrict user browser click go back button */
-    function preback() { window.history.forward(); }
-    setTimeout("preback()", 0);
-    window.onunload = function() { null };
+        /* restrict user browser click go back button */
+        function preback() { window.history.forward(); }
+        setTimeout("preback()", 0);
+        window.onunload = function() { null };
 
-    /* Left click dissabled (not select any content or text)*/
-    function disableselect(e) { return false; }
+        /* Left click dissabled (not select any content or text)*/
+        function disableselect(e) { return false; }
 
-    function reEnable() { return true; }
-    document.onselectstart = new Function("return false")
-    if (window.sidebar) {
-        document.onmousedown = disableselect
-        document.onclick = reEnable
-    }
+        function reEnable() { return true; }
+        document.onselectstart = new Function("return false")
+        if (window.sidebar) {
+            document.onmousedown = disableselect
+            document.onclick = reEnable
+        }
 
-    /* Right click dissabled */
-    function ieClicked() { if (document.all) { return false; } }
+        /* Right click dissabled */
+        function ieClicked() { if (document.all) { return false; } }
 
-    function firefoxClicked(e) { if (document.layers || (document.getElementById && !document.all)) { if (e.which == 2 || e.which == 3) { return false; } } }
-    if (document.layers) {
-        document.captureEvents(Event.MOUSEDOWN);
-        document.onmousedown = firefoxClicked;
-    } else {
-        document.onmouseup = firefoxClicked;
-        document.oncontextmenu = ieClicked;
-    }
-    document.oncontextmenu = new Function("return false")
+        function firefoxClicked(e) { if (document.layers || (document.getElementById && !document.all)) { if (e.which == 2 || e.which == 3) { return false; } } }
+        if (document.layers) {
+            document.captureEvents(Event.MOUSEDOWN);
+            document.onmousedown = firefoxClicked;
+        } else {
+            document.onmouseup = firefoxClicked;
+            document.oncontextmenu = ieClicked;
+        }
+        document.oncontextmenu = new Function("return false")
 
-    /* Dissable shortcut key */
-    document.onkeydown = function(e) {
-        if ((e.ctrlKey && e.shiftKey && (e.keyCode === 73)) || (e.ctrlKey && (e.keyCode === 65 || e.keyCode === 67 || e.keyCode === 72 || e.keyCode === 74 || e.keyCode === 78 || e.keyCode === 79 || e.keyCode === 80 || e.keyCode === 82 || e.keyCode === 83 || e.keyCode === 85 /* || e.keyCode === 88*/ || e.keyCode === 89 || e.keyCode === 90))) { return false; }
-        return true;
-    };
+        /* Dissable shortcut key */
+        document.onkeydown = function(e) {
+            if ((e.ctrlKey && e.shiftKey && (e.keyCode === 73)) || (e.ctrlKey && (e.keyCode === 65 || e.keyCode === 67 || e.keyCode === 72 || e.keyCode === 74 || e.keyCode === 78 || e.keyCode === 79 || e.keyCode === 80 || e.keyCode === 82 || e.keyCode === 83 || e.keyCode === 85 /* || e.keyCode === 88*/ || e.keyCode === 89 || e.keyCode === 90))) { return false; }
+            return true;
+        };
 
-    /* To check Valid mobile number*/
-    function isMobile(){
-        let re = /^0?[5-9]{1}\d{9}$/;
-        var mobile = document.getElementById('mobile');
-        if(mobile.value != ""){
-            if(mobile.value.match(re)){
-                return true;
-            }else{
-                return false;
+        /* To check Valid mobile number*/
+        function isMobile(){
+            let re = /^0?[5-9]{1}\d{9}$/;
+            var mobile = document.getElementById('mobile');
+            if(mobile.value != ""){
+                if(mobile.value.match(re)){
+                    return true;
+                }else{
+                    return false;
+                }
             }
         }
-    }
 
-    </script>
-    <script type="text/javascript">
-
+        // dissplay time
 		setInterval(function(){
 			var hr,min,sec, amPM;
 			var time = new Date();
@@ -270,6 +268,13 @@
 			
 			document.getElementById("time").innerHTML ="<span style='color:#e3c710;'>Current Time </span><br><b style='color:#11ba35;'>"+hr+"</b>:<b style='color:#02d8f0;'>"+m+"</b>:<b style='color:#f02940;'>"+s+" <b style='color:#0818c4;'>"+amPM+"</b>";		
 		}, 500);
+
+        // remove automatic alert message
+        if ($(".alert").is(":visible")){
+            setTimeout(function() {
+                $(".alert").fadeOut("slow");
+            }, 3000)
+        }
 
 	</script>
 </body>
