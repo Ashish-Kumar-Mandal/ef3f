@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import RegexValidator
 
 # Create your models here.
 class Contact(models.Model):
@@ -28,7 +29,7 @@ class UserProfile(models.Model):
     user_id = models.OneToOneField(User, on_delete=models.CASCADE)
     use_referal_code = models.CharField(max_length=10, blank=True, null=True)
     my_referal_code = models.CharField(max_length=10, blank=True, null=True)
-    mobile = models.IntegerField(blank=True, null=True)
+    mobile = models.CharField(validators=[RegexValidator("^0?[5-9]{1}\d{9}$")], max_length=15, null=True, blank=True)
     gender = models.CharField(max_length=10, default="Male", choices=(("Male","Male"), ("Female","Female")), blank=True, null=True)
     dob = models.DateField(auto_now=False, auto_now_add=False, blank=True, null=True)
     state = models.CharField(max_length=100, blank=True, null=True)
