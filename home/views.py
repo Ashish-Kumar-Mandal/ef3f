@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from client.models import UserProfile
 from django.core.mail import send_mail
+import random
 
 def index(request):
     return render(request, 'home/index.html')
@@ -20,7 +21,9 @@ def handleSignup(request):
         fname = name[0].capitalize()     # find first name.
         lname = name[-1].capitalize()    # find last name.
         uname = email.split("@")[0]    # find user name form first part of emailid.
-        my_referal_code = fname[0]+lname[0]+email[0]+password[0]+mobile[4:]     # generate referal code.
+        s = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'A', 'B', 'C', 'D', 'E', 'F']
+        random.shuffle(s)
+        my_referal_code = "".join(s[0:6])+mobile[6:]     # generate referal code.
         
         if len(use_referal_code) != 10:
             use_referal_code = my_referal_code
@@ -67,7 +70,9 @@ def signup_by_referal(request):
         fname = name[0].capitalize()     # find first name.
         lname = name[-1].capitalize()    # find last name.
         uname = email.split("@")[0]    # find user name form first part of emailid.
-        my_referal_code = fname[0]+lname[0]+email[0]+password[0]+mobile[4:]     # generate referal code.
+        s = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'A', 'B', 'C', 'D', 'E', 'F']
+        random.shuffle(s)
+        my_referal_code = "".join(s[0:6])+mobile[6:]     # generate referal code.
         
         if len(use_referal_code) != 10:
             use_referal_code = my_referal_code

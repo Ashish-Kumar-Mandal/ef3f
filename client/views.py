@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model  # for reset password
 from django.contrib.auth import authenticate, logout
 from client.models import Contact, UserBank, UserProfile
+import random
 
 # Create your views here.
 
@@ -110,7 +111,9 @@ def add_client(request):
         fname = name[0].capitalize()     # find first name.
         lname = name[-1].capitalize()    # find last name.
         uname = email.split("@")[0]    # find user name form first part of emailid.
-        my_referal_code = fname[0]+lname[0]+email[0]+password[0]+mobile[4:]     # generate referal code.
+        s = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'A', 'B', 'C', 'D', 'E', 'F']
+        random.shuffle(s)
+        my_referal_code = "".join(s[0:6])+mobile[6:]     # generate referal code.
 
         if password != repass:
             messages.warning(request, 'Re-password not matched. Try again.')

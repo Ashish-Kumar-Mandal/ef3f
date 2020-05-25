@@ -26,7 +26,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-    'ef3f',
 ]
 
 MIDDLEWARE = [
@@ -63,24 +62,31 @@ WSGI_APPLICATION = 'ef3f.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         'ENGINE': 'djongo',
+#         'NAME': 'ef3f',
 #     }
 # }
 
 # # Please install: 'pip install mysqlclient' then work phpMysql database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ef3f',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'USER': 'root',
-        'PASSWORD': '',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'ef3f',
+#         'HOST': '127.0.0.1',
+#         'PORT': '3306',
+#         'USER': 'root',
+#         'PASSWORD': '',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
