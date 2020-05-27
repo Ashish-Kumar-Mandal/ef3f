@@ -68,6 +68,7 @@ def password(request):
 
 def bank(request):
     if request.method=="POST":
+        upi_id = request.POST['upi_id']
         bank_name = request.POST['bank_name']
         account_holder_name = request.POST['account_holder_name']
         account_number = request.POST['account_number']
@@ -75,17 +76,18 @@ def bank(request):
         branch_name = request.POST['branch_name']
         ifsc_code = request.POST['ifsc_code']
 
-        if bank_name=="" or account_holder_name=="" or account_number=="" or account_number2=="" or branch_name=="" or ifsc_code=="":
-            messages.error(request, 'All fields are required!.')
-            return redirect('Bank')
+        if(upi_id==""):
+            if bank_name=="" or account_holder_name=="" or account_number=="" or account_number2=="" or branch_name=="" or ifsc_code=="":
+                messages.error(request, 'All fields are required!.')
+                return redirect('Bank')
 
-        if account_number != account_number2:
-            messages.error(request, 'Account Number not matched!, Try again.')
-            return redirect('Bank')
+            if account_number != account_number2:
+                messages.error(request, 'Account Number not matched!, Try again.')
+                return redirect('Bank')
 
         try:
-            UserBank.objects.filter(user_id=request.user).update(bank_name=bank_name, account_holder_name=account_holder_name, account_number=account_number, branch_name=branch_name, ifsc_code=ifsc_code)
-            messages.success(request, 'Your Bank Account Details Successfully Saved. Thank you.')
+            UserBank.objects.filter(user_id=request.user).update(upi_id=upi_id, bank_name=bank_name, account_holder_name=account_holder_name, account_number=account_number, branch_name=branch_name, ifsc_code=ifsc_code)
+            messages.success(request, 'Your UPI or Bank Account Details Successfully Saved. Thank you.')
         except:
             messages.error(request, 'Something Wrong!')
 

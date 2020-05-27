@@ -26,7 +26,7 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">Direct Earning</div>
+                      <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">Incentive Earning</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800"><i class="fa fa-rupee" style="font-size:16px"></i> 0.00</div>
                     </div>
                     <div class="col-auto">
@@ -42,7 +42,7 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Earning From Team</div>
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Basic Earning</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800"><i class="fa fa-rupee" style="font-size:16px"></i> 0.00</div>
                     </div>
                     <div class="col-auto">
@@ -77,11 +77,11 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">Total Incentive</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><i class="fa fa-rupee" style="font-size:16px"></i> 0.00</div>
+                      <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">Membership Expire</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><span id="exp_time">----/--/--</span></div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-institution fa-2x text-gray-300"></i>
+                      <i class="fas fa-calendar-times-o fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -95,7 +95,7 @@
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Qualify Label</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
-                       <i class="fa fa-star-half-empty"></i>
+                       <i class="fa fa-star-o"></i>
                        <i class="fa fa-star-o"></i>
                        <i class="fa fa-star-o"></i>
                        <i class="fa fa-star-o"></i>
@@ -147,10 +147,125 @@
             <div class="col-md-12">
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Our Mission</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Company Policy</h6>
                 </div>
                 <div class="card-body text-justify">
-                  <p>This site is under developing for give more profit and also facilities.</p>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                          <tr>
+                            <th>Labels</th>
+                            <th>My Members</th>
+                            <th>Team Members</th>
+                            <th>Every Referal</th>
+                            <th>Every Month</th>
+                            <th>Every Year</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <i class="fa fa-star-o"></i>
+                              <i class="fa fa-star-o"></i>
+                              <i class="fa fa-star-o"></i>
+                              <i class="fa fa-star-o"></i>
+                              <i class="fa fa-star-o"></i>
+                            </td>
+                            <td><i class="fas fa-user-plus text-gray-300"></i> < 1 </td>
+                            <td><i class="fas fa-users text-gray-300"></i> < 10</td>
+                            <td><i class="fas fa-inr text-gray-300"></i> 50.00</td>
+                            <td><i class="fas fa-inr text-gray-300"></i> 0.00</td>
+                            <td><i class="fas fa-inr text-gray-300"></i> 0.00</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <i class="fa fa-star-half-empty"></i>
+                              <i class="fa fa-star-o"></i>
+                              <i class="fa fa-star-o"></i>
+                              <i class="fa fa-star-o"></i>
+                              <i class="fa fa-star-o"></i>
+                            </td>
+                            <td>1 <= <i class="fas fa-user-plus text-gray-300"></i> < 3 </td>
+                            <td>10 <= <i class="fas fa-users text-gray-300"></i> < 100</td>
+                            <td><i class="fas fa-inr text-gray-300"></i> 50.00</td>
+                            <td><i class="fas fa-inr text-gray-300"></i> 50.00</td>
+                            <td><i class="fas fa-inr text-gray-300"></i> 700.00</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star-o"></i>
+                              <i class="fa fa-star-o"></i>
+                              <i class="fa fa-star-o"></i>
+                              <i class="fa fa-star-o"></i>
+                            </td>
+                            <td>3 <= <i class="fas fa-user-plus text-gray-300"></i> < 6 </td>
+                            <td>100 <= <i class="fas fa-users text-gray-300"></i> < 1000</td>
+                            <td><i class="fas fa-inr text-gray-300"></i> 50.00</td>
+                            <td><i class="fas fa-inr text-gray-300"></i> 100.00</td>
+                            <td><i class="fas fa-inr text-gray-300"></i> 1450.00</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star-o"></i>
+                              <i class="fa fa-star-o"></i>
+                              <i class="fa fa-star-o"></i>
+                            </td>
+                            <td>6 <= <i class="fas fa-user-plus text-gray-300"></i> < 10 </td>
+                            <td>1000 <= <i class="fas fa-users text-gray-300"></i> < 10000</td>
+                            <td><i class="fas fa-inr text-gray-300"></i> 50.00</td>
+                            <td><i class="fas fa-inr text-gray-300"></i> 110.00</td>
+                            <td><i class="fas fa-inr text-gray-300"></i> 1770.00</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star-o"></i>
+                              <i class="fa fa-star-o"></i>
+                            </td>
+                            <td>10 <= <i class="fas fa-user-plus text-gray-300"></i> < 25 </td>
+                            <td>10000 <= <i class="fas fa-users text-gray-300"></i> < 50000</td>
+                            <td><i class="fas fa-inr text-gray-300"></i> 50.00</td>
+                            <td><i class="fas fa-inr text-gray-300"></i> 150.00</td>
+                            <td><i class="fas fa-inr text-gray-300"></i> 3000.00</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star-o"></i>
+                            </td>
+                            <td>25 <= <i class="fas fa-user-plus text-gray-300"></i> < 50 </td>
+                            <td>50000 <= <i class="fas fa-users text-gray-300"></i> < 100000</td>
+                            <td><i class="fas fa-inr text-gray-300"></i> 50.00</td>
+                            <td><i class="fas fa-inr text-gray-300"></i> 300.00</td>
+                            <td><i class="fas fa-inr text-gray-300"></i> 6050.00</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                            </td>
+                            <td>50 <= <i class="fas fa-user-plus text-gray-300"></i></td>
+                            <td>100000 <= <i class="fas fa-users text-gray-300"></i></td>
+                            <td><i class="fas fa-inr text-gray-300"></i> 50.00</td>
+                            <td><i class="fas fa-inr text-gray-300"></i> 300.00</td>
+                            <td><i class="fas fa-inr text-gray-300"></i> Unlimited</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div> 

@@ -16,6 +16,7 @@ class Contact(models.Model):
 class UserBank(models.Model):
     sn = models.AutoField(primary_key=True)
     user_id = models.OneToOneField(User, on_delete=models.CASCADE)
+    upi_id = models.CharField(max_length=50, blank=True, null=True)
     bank_name = models.CharField(max_length=100, blank=True, null=True)
     account_holder_name = models.CharField(max_length=100, blank=True, null=True)
     account_number = models.CharField(max_length=30, blank=True, null=True)
