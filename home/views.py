@@ -26,7 +26,9 @@ def handleSignup(request):
         my_referal_code = "".join(s[0:6])+mobile[6:]     # generate referal code.
 
         fetch_referal = UserProfile.objects.filter(my_referal_code=use_referal_code).first()
-        print(fetch_referal)
+        
+        if fname==lname:
+            lname = ""
         
         if not fetch_referal:
             use_referal_code = "1Ae3F35586"
@@ -76,9 +78,14 @@ def signup_by_referal(request):
         s = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'A', 'B', 'C', 'D', 'E', 'F']
         random.shuffle(s)
         my_referal_code = "".join(s[0:6])+mobile[6:]     # generate referal code.
+
+        fetch_referal = UserProfile.objects.filter(my_referal_code=use_referal_code).first()
+
+        if fname==lname:
+            lname = ""
         
-        if len(use_referal_code) != 10:
-            use_referal_code = my_referal_code
+        if not fetch_referal:
+            use_referal_code = "1Ae3F35586"
 
         if password != repass:
             messages.warning(request, 'Re-password not matched. Try again.')

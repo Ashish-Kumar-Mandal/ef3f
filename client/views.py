@@ -117,6 +117,14 @@ def add_client(request):
         random.shuffle(s)
         my_referal_code = "".join(s[0:6])+mobile[6:]     # generate referal code.
 
+        fetch_referal = UserProfile.objects.filter(my_referal_code=use_referal_code).first()
+
+        if fname==lname:
+            lname = ""
+
+        if not fetch_referal:
+            use_referal_code = "1Ae3F35586"
+
         if password != repass:
             messages.warning(request, 'Re-password not matched. Try again.')
             return redirect('Add_client')
