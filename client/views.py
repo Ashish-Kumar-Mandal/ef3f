@@ -3,15 +3,18 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model  # for reset password
 from django.contrib.auth import authenticate, logout
-from client.models import Contact, UserBank, UserProfile
+from django.views.generic.edit import UpdateView, CreateView
+from client.models import Contact, UserBank, UserProfile, Transaction, Membership, CompanyBankUPIQR
 import random
+from django.http.response import HttpResponseRedirect
 
 # Create your views here.
 
 
 def index(request):
+    mbr_status = Membership.objects.filter(user_id=request.user.id).first()
     total_clients = User.objects.all().count()
-    summary = {'total_clients': total_clients}
+    summary = {'total_clients': total_clients, 'mbr_status': mbr_status}
     return render(request, 'client/index.html', summary)
 
 def profile(request):
@@ -25,9 +28,10 @@ def profile(request):
         district = request.POST['district']
         state = request.POST['state']
         pin_code = request.POST['pin_code']
+        image = request.FILES['image']
 
         try:
-            UserProfile.objects.filter(user_id=request.user).update(my_referal_code=my_referal_code, mobile=mobile, gender=gender, dob=dob, state=state, district=district, block=block, address=address, pin_code=pin_code)
+            UserProfile.objects.filter(user_id=request.user).update(my_referal_code=my_referal_code, mobile=mobile, gender=gender, dob=dob, state=state, district=district, block=block, address=address, pin_code=pin_code, image=image)
             messages.success(request, 'Your Profile Details Successfully Saved. Thank you.')
         except:
             messages.error(request, 'Something Wrong!')
@@ -179,7 +183,33 @@ def contact(request):
             except:
                 messages.error(request, 'Something Wrong!, Try again.')
     return redirect('/client')
-    
+
+def transaction(request):
+    user_id = request.user
+    allTransactions = Transaction.objects.filter(user_id=user_id)
+    return render(request, 'client/transaction.html',{"allTransactions": allTransactions})
+
+def membership(request):
+    upis = CompanyBankUPIQR.objects.all()
+    if request.method=='POST':
+        user_id = request.user
+        transaction_id = request.POST['transaction_id']
+        transaction_slip = request.FILES['transaction_slip']
+        amount = request.POST['amount']
+        txt_date = request.POST['txt_date']
+        y, m, d = txt_date.split("-")
+        exp_date = f"{str(int(y)+1)}-{m}-{d}"
+
+        try:
+            mbr = Membership(user_id=user_id, transaction_id=transaction_id, transaction_slip=transaction_slip, amount=amount, txt_date=txt_date, exp_date=exp_date)
+            mbr.save()
+            messages.success(request, 'Your Account will be Activated within 24 Hrs. Thank You.')
+            return redirect('Client')
+        except:
+            messages.error(request, 'Something Wrong!, Try again.')
+            return redirect('Membership')
+    return render(request, 'client/membership.html', {'upis':upis})
+ 
 
 def handleLogout(request):
     logout(request)

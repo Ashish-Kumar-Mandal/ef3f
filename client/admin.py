@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.admin.options import ModelAdmin
-from client.models import Contact, UserBank, UserProfile
+from client.models import Contact, UserBank, UserProfile, CompanyBankUPIQR, Membership, Transaction
 
 class ContactAdmin(ModelAdmin):
     list_display = ["name", "mobile", "title", "timeStamp"]
@@ -20,3 +20,18 @@ class UserProfileAdmin(ModelAdmin):
     list_filter = ["timeStamp", "gender"]
 admin.site.register(UserProfile, UserProfileAdmin)
 
+class CompanyBankUPIQRAdmin(ModelAdmin):
+    list_display = ["upi_id","qr_code","account_number"]
+admin.site.register(CompanyBankUPIQR, CompanyBankUPIQRAdmin)
+
+class MembershipAdmin(ModelAdmin):
+    list_display = ["user_id","transaction_id","transaction_slip","status","txt_date","exp_date"]
+    search_fields = ["user_id","transaction_id","status"]
+    list_filter = ["status","txt_date"]
+admin.site.register(Membership, MembershipAdmin)
+
+class TransactionAdmin(ModelAdmin):
+    list_display = ["user_id","transaction_id","amount","txt_date","status"]
+    search_fields = ["user_id","transaction_id","txt_date","status"]
+    list_filter = ["status","txt_date"]
+admin.site.register(Transaction, TransactionAdmin)

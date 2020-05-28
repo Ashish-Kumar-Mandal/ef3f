@@ -12,13 +12,13 @@
                 <h6 class="m-0 font-weight-bold text-primary">Add Profile</h6>
             </div>
             <div class="card-body text-justify">
-                <form class="user" method="post" action="/client/profile"> {% csrf_token %}
+                <form class="user" method="post" action="/client/profile"  enctype="multipart/form-data"> {% csrf_token %}
                 <div class="form-group row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
                         <label for="my_referal_code" class="label">My Referal Code</label>
                         <input type="text" class="form-control form-control-user" value="{{profileDetails.my_referal_code}}" id="my_referal_code" name="my_referal_code" readonly>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
                         <label for="mobile" class="label">Mobile</label>
                         <input type="text" class="form-control form-control-user" value="{{profileDetails.mobile}}" id="mobile" name="mobile" placeholder="Mobile..." required>
                     </div>
@@ -38,7 +38,7 @@
                     </div>
                 </div>              
                 <div class="form-group row">                    
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
                         <label for="state" class="label">State</label>
                         <input type="text" class="form-control form-control-user" value="{{profileDetails.state}}" id="state" name="state" placeholder="State...">
                     </div>
@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
                         <label for="block" class="label">Block</label>
                         <input type="text" class="form-control form-control-user" value="{{profileDetails.block}}" id="block" name="block" placeholder="Blpck...">
                     </div>
@@ -57,11 +57,17 @@
                         <input type="text" class="form-control form-control-user"  value="{{profileDetails.address}}" id="address" name="address" placeholder="Address...">
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="pin_code" class="label">PIN Code</label>
-                    <input type="text" class="form-control form-control-user"  value="{{profileDetails.pin_code}}" id="pin_code" name="pin_code" placeholder="PIN Code...">
+                <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <label for="pin_code" class="label">PIN Code</label>
+                        <input type="text" class="form-control form-control-user"  value="{{profileDetails.pin_code}}" id="pin_code" name="pin_code" placeholder="PIN Code...">
+                    </div>
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <label for="image" class="label">Select Profile Picture</label>
+                        <input type="file" class="form-control form-control-user" id="image" name="image">
+                    </div>
                 </div>
-                <input type="submit" value="Submit" class="btn btn-primary">
+                    <input type="submit" value="Submit" class="btn btn-primary">
                 </form>
             </div>
             </div>

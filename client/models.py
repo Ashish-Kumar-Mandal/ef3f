@@ -41,3 +41,36 @@ class UserProfile(models.Model):
     image = models.ImageField(upload_to="client/users", blank=True, null=True)
     timeStamp = models.DateTimeField(auto_now_add=True)
 
+
+class CompanyBankUPIQR(models.Model):
+    sn = models.AutoField(primary_key=True)
+    pay_ammount = models.CharField(max_length=10, blank=True, null=True)
+    upi_id = models.CharField(max_length=30, blank=True, null=True)
+    qr_code = models.ImageField(upload_to="client/qrcode", blank=True, null=True)
+    account_holder_name = models.CharField(max_length=30, blank=True, null=True)
+    account_number = models.CharField(max_length=30, blank=True, null=True)
+    bank_name = models.CharField(max_length=60, blank=True, null=True)
+    branch_name = models.CharField(max_length=100, blank=True, null=True)
+    ifsc_code = models.CharField(max_length=20, blank=True, null=True)
+    date = models.DateField(auto_now_add=True)
+
+
+class Membership(models.Model):
+    Membership_id = models.BigAutoField(primary_key=True)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    transaction_id = models.CharField(max_length=100, blank=True, null=True)
+    transaction_slip = models.ImageField(upload_to="client/transactionSlip", blank=True, null=True)
+    amount = models.CharField(max_length=5, blank=True, null=True)
+    status = models.CharField(max_length=10, default="0", choices=(("0","Inactivated"), ("1","Activated")), blank=True, null=True)
+    txt_date = models.DateField(blank=True, null=True)
+    exp_date = models.DateField(blank=True, null=True)
+
+  
+class Transaction(models.Model):
+    sn = models.AutoField(primary_key=True)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    transaction_id = models.CharField(max_length=100, blank=True, null=True)
+    amount = models.CharField(max_length=10, blank=True, null=True)
+    upi_or_account = models.CharField(max_length=30, blank=True, null=True)
+    txt_date = models.DateField(auto_now_add=True)
+    status = models.CharField(max_length=10, default="1", choices=(("0","Failed"), ("1","Success")), blank=True, null=True)

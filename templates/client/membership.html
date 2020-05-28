@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block title %} Activate Membership {% endblock title %}
+{% block body_titlle %}Activate Membership{% endblock body_titlle %}
+{% block css %}<style>
+    table{
+        width: fit-content;
+        display: inline-flexbox;
+    }
+    #pay_info{
+        padding-bottom: 30px;
+        color: rgb(248, 16, 47);
+        text-align: center;
+    }
+    #upi_id{
+        padding-bottom: 30px;
+        color: rgb(16, 4, 185);
+        text-align: center;
+    }
+    #qr_code{
+        width: 100%;
+        height: auto;
+    }
+</style>{% endblock css %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Pay through UPI_ID / QR Code</h6>
+            </div>
+            <div class="card-body text-justify">
+                {% for upi in upis %}
+                    <table>
+                        <tr>
+                            <td id="pay_info">For 1 year Membership Pay <b>Rs. {{upi.pay_ammount}}</b></td>
+                        </tr>
+                        <tr>
+                            <td id="upi_id">UPI ID: <b>{{upi.upi_id}}</b></td>
+                        </tr>
+                        <tr>
+                            <td><img src="/media/{{upi.qr_code}}" id="qr_code"></td>
+                        </tr>
+                    </table>
+                {% endfor %}
+            </div>
+            </div>
+        </div> 
+        <div class="col-md-6">
+            <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Please Provide Your Transaction Details</h6>
+            </div>
+            <div class="card-body text-justify">
+                <form method="post" action="/client/membership/" enctype="multipart/form-data">{% csrf_token %}
+                    <label for="id_transaction_id">Transaction id:</label>
+                    <input type="text" class="form-control my-1" name="transaction_id" maxlength="100" id="id_transaction_id" placeholder="Enter transaction id..." required>
+                    <label for="id_transaction_slip">Transaction slip:</label>
+                    <input type="file" class="form-control my-1" name="transaction_slip" accept="image/*" id="id_transaction_slip" required>
+                    <label for="id_amount">Amount:</label>
+                    <input type="text" class="form-control my-1" name="amount" value="499" maxlength="5" id="id_amount" required>
+                    <label for="id_txt_date">Transaction date:</label>
+                    <input type="date" class="form-control my-1" name="txt_date" id="id_txt_date" required>
+                    <input type="Submit" name="Activate" value="Activate Account" class="btn btn-primary">
+                </form>
+            </div>
+            </div>
+        </div> 
+    </div>
+{% endblock body %}
+
+{% block js %}<script>
+
+</script>{% endblock js %}

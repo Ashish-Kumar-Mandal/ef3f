@@ -2,6 +2,14 @@
 {% block title %} Dashboard {% endblock title %}
 {% block body_titlle %}Dashboard{% endblock body_titlle %}
 
+{% block activateMembership %}
+  {% if mbr_status.status %}
+      <span style="color:green; font-size:10px;"><i class="fa fa-check-circle-o"></i> Active</span>
+  {% else %}
+      <span><a href="/client/membership" style="color:red; font-size:10px; text-decoration:none;" class="btn btn-warning btn-sm"><i class="fa fa-times-circle-o"></i> Inactive </a></span>
+  {% endif %}
+{% endblock activateMembership %}
+
 {% block body %}
           <div class="row">
             <!-- Earnings (Monthly) Card Example -->
@@ -78,7 +86,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">Membership Expire</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><span id="exp_time">----/--/--</span></div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><span id="exp_time">{{mbr_status.exp_date}}</span></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-calendar-times-o fa-2x text-gray-300"></i>

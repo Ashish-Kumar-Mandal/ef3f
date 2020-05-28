@@ -49,6 +49,11 @@
             </div>
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
+                <a class="nav-link" href="/client/transaction">
+                    <i class="fa fa-exchange"></i>
+                    <span>All Transactions</span></a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/client/bank">
                     <i class="fas fa-institution"></i>
                     <span>Bank Details</span></a>
@@ -136,10 +141,7 @@
                     <!-- Page body -->
                     <div class="d-flex">
                         <div class="p-2">{% block body_titlle %} {% endblock body_titlle %}</div>
-                        <div class="p-2">
-                            <span style="color:red; font-size:10px;"><i class="fa fa-times-circle-o"></i> Inactive</span>
-                            <!--<span style="color:green; font-size:10px;"><i class="fa fa-check-circle-o"></i> Active</span>-->
-                        </div>
+                        <div class="p-2">{% block activateMembership %} {% endblock activateMembership %}</div>
                         <div class="ml-auto p-2"><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#helpMessage"><i class="fas fa-envelope"></i> Help</button></div>
                     </div>
                     {% block body %} {% endblock body %}
