@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
+from django.utils.html import mark_safe
 
 # Create your models here.
 class Contact(models.Model):
@@ -64,6 +65,11 @@ class Membership(models.Model):
     status = models.CharField(max_length=10, default="0", choices=(("0","Inactivated"), ("1","Activated")), blank=True, null=True)
     txt_date = models.DateField(blank=True, null=True)
     exp_date = models.DateField(blank=True, null=True)
+
+    def image_tag(self):
+        return mark_safe('<img src="/media/%s" width="50" height="50" />' % (self.transaction_slip))
+
+    image_tag.short_description = 'Slip'
 
   
 class Transaction(models.Model):

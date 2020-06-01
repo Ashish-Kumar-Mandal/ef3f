@@ -3,7 +3,7 @@
 {% block body_titlle %}Dashboard{% endblock body_titlle %}
 
 {% block activateMembership %}
-  {% if mbr_status.status %}
+  {% if mbr_status.status == "1" %}
       <span style="color:green; font-size:10px;"><i class="fa fa-check-circle-o"></i> Active</span>
   {% else %}
       <span><a href="/client/membership" style="color:red; font-size:10px; text-decoration:none;" class="btn btn-warning btn-sm"><i class="fa fa-times-circle-o"></i> Inactive </a></span>
@@ -159,6 +159,7 @@
                 </div>
                 <div class="card-body text-justify">
                   <div class="card-body">
+                    <h5 style="color: red;">OFFER: If your first Referal Code Activate then instantly earn <u>Rs. 550.00/-</u></h5>
                     <div class="table-responsive">
                       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
@@ -188,27 +189,13 @@
                           </tr>
                           <tr>
                             <td>
-                              <i class="fa fa-star-half-empty"></i>
-                              <i class="fa fa-star-o"></i>
-                              <i class="fa fa-star-o"></i>
-                              <i class="fa fa-star-o"></i>
-                              <i class="fa fa-star-o"></i>
-                            </td>
-                            <td>1 <= <i class="fas fa-user-plus text-gray-300"></i> < 3 </td>
-                            <td><i class="fas fa-users text-gray-300"></i> >= 10</td>
-                            <td><i class="fas fa-inr text-gray-300"></i> 50.00</td>
-                            <td><i class="fas fa-inr text-gray-300"></i> 50.00</td>
-                            <td><i class="fas fa-inr text-gray-300"></i> 700.00</td>
-                          </tr>
-                          <tr>
-                            <td>
                               <i class="fa fa-star"></i>
                               <i class="fa fa-star-o"></i>
                               <i class="fa fa-star-o"></i>
                               <i class="fa fa-star-o"></i>
                               <i class="fa fa-star-o"></i>
                             </td>
-                            <td>3 <= <i class="fas fa-user-plus text-gray-300"></i> < 6 </td>
+                            <td>4 <= <i class="fas fa-user-plus text-gray-300"></i> < 6 </td>
                             <td><i class="fas fa-users text-gray-300"></i> >= 100</td>
                             <td><i class="fas fa-inr text-gray-300"></i> 50.00</td>
                             <td><i class="fas fa-inr text-gray-300"></i> 100.00</td>

@@ -34,7 +34,14 @@
                       <td>{{list.district}}</td>
                       <td>{{list.state}}</td>
                       <td>{{list.timeStamp}}</td>
-                      <td><i class="fa fa-times-circle-o" style="font-size:24px;color:red"></i></td>
+                      <td><span><i class="fa fa-times-circle-o" style="font-size:24px;color:red"></i></span></td>
+                      <!--td>
+                        {% if mbr_status.status == "1" %}
+                            <span><i class="fa fa-check-circle-o" style="font-size:24px;color:green"></i></span>
+                        {% else %}
+                            <span><i class="fa fa-times-circle-o" style="font-size:24px;color:red"></i></span>
+                        {% endif %}
+                      </td-->
                     </tr>
                     {% endfor %}
                   </tbody>
